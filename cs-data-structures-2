@@ -1,0 +1,161 @@
+Part 1: Discussion Questions
+
+Make a new file and add your answers to the questions below. Push the file to
+your github repository along with the other solutions.
+
+Recursion
+
+1. In your own words, what is recursion?
+
+Recursion is when a function calls itself. The function's definition includes
+one or more calls to the function itself.
+
+2. Why is it necessary to have a base case?
+
+A base case is necessary in order to guarantee that the recursive calls
+eventually stop, rather than continuing infinitely.
+
+Graphs
+
+1. What is a graph?
+
+A graph is a data structure of interrelated nodes. It can be used to model
+things like decision processes, friend networks, and other systems. Connected
+nodes are connected by edges (aka arcs) and are said to be adjacent to one
+another. Edges can also, optionally, have an associated weight.
+
+2. How is a graph different from a tree?
+
+A graph can contain loops ("cycles"), and its relationships can be directed or
+undirected. They also don't have to be connected. Trees (a special case of a
+graph) are connected and acyclic, and they are usually (though not always)
+directed. Trees can have hierarchy: graphs do not.
+
+3. Give an example of something that would be good to model with a graph.
+
+A food chain can be modeled well with a graph.
+
+Performance of Different Data Structures
+
+Fill in the missing spots in the chart with the correct runtimes. Do this by 
+reasoning through how the data structures work, NOT by looking up the solution.
+Add-R means add to the right/end/top and Add-L means add to the
+left/beginning/bottom. There are X’s in the spots where that operation doesn’t 
+make sense for that data structure (for instance, you can’t index a stack, or 
+pop from the end of a queue). We’ve provided the first few answers for you.
+
+Fill in the runtimes for the following actions for the table below:
+
+Data Structure             Index   Search  Add-R   Add-L   Pop-L   Pop-R
+Python List (Array)         O(1)    O(n)    O(1)    O(n)    O(n)    O(1)
+Linked List                 O(n)    O(n)    O(1)    O(1)    O(1)    O(n)
+Doubly-Linked List          O(n)    O(n)    O(1)    O(1)    O(1)    O(1)             
+Queue (as Array)             X       X      O(1)     X      O(n)     X
+Queue (as LL or DLL)         X       X      O(1)     X      O(1)     X
+Stack (as Array, LL, or DLL) X       X      O(1)     X       X      O(1)
+Deque (as DLL)               X       X      O(1)    O(1)    O(1)    O(1)        
+    Index: Find an item in the structure when you know its position
+    Search: Find an item in the structure when you know its data
+    Add(R/L): Set a key in set/dictionary or add node to tree
+    Pop(R/L): Remove a key or node
+
+Fill in Runtime and Memory:
+
+The answers for dictionary have been provided; you should fill in the rest:
+
+Data Structure          Get      Add      Delete   Iterate  Memory
+Dictionary (Hash Map)   O(1)     O(1)     O(1)     O(n)     medium
+Set (Hash Map)          O(1)     O(1)     O(1)     O(n)     medium   
+Binary Search Tree      O(log n) O(log n) O(log n) O(1)     little
+Tree                    O(n)     O(1)     O(1)     O(1)     little 
+    Get: Find an item in the structure
+    Add: Set a key in set/dictionary or add node to tree
+    Delete: Remove a key or node
+    Iterate: Find next item in data structure
+    Memory: Relative to data, how much memory is used? (Choices: a little, 
+    medium, or a lot)
+
+Sorting
+
+Describe in words how the Bubble Sort algorithm works.
+
+Bubble sort sorts a list of items in order of ascending value by repeatedly
+comparing adjacent items and, if the value of the item on the left is greater 
+than the value of the item on the right, swapping them. Starting with the items
+at index 0 (left) and in index 1 (right), compare them. If what's on the left
+has the higher value, swap them. Otherwise, do not. Either way, the next step
+will be to compare the value of the items now at index 1 and index 2. Once again,
+if the value on the left is higher, swap them. And whether you swap them or not, 
+proceed by comparing the value of the items at index 2 and index 3. If you
+continue this process until you reach the end of the list, the last term will be
+"sorted"--the highest term will be at the end of the list. Then, you start the
+process over at the beginning of the list. And you repeat it until all items in
+the list are ordered sequentially.
+
+Though it can be optimized in a few ways (like, for instance, not checking the 
+sorted terms at the end of the list in later loops), its structure is such that 
+its runtime is quadratic, meaning that it's rarely the ideal solution. 
+
+Describe in words how the Merge Sort algorithm works.
+
+The merge sort algorithm takes advantage of the fact that if we have two 
+already-sorted lists, we can create a new list with the values from both input 
+lists in order. 
+
+To do so, first you create a new, empty list. Then, you compare 
+the first item in the first list to the first item in the second list. Whichever
+is smaller, remove that item from its respective list and add the item to the 
+empty (third) list. Now, the first item of one of first two lists will be 
+different. So, once again, compare the first items of the input lists and take
+the smaller one and add it to the third list. Keep doing this until one of the 
+lists is empty, and then add everything remaining in the other list to the third
+list. The third list will combine all of the elements of the original input 
+lists, and they'll appear in order.
+
+Merge sort uses this capability to take a single, unsorted list and order it in
+O(n log n) runtime. Starting with a single, unsorted list (with more than one
+item), you get the index at the halfway point of this list and break the list 
+into halves. If the original list had more than two items, continue splitting
+the resulting lists until every item from the original list is a list of one
+item--because a list of one item is guaranteed to be sorted. From here, we can
+combine (as described above) each list of one into a sorted list of two 
+(or two and one, if the original list had an odd number of elements). Then, 
+depending on the size of our original list, we combine each list of two into a
+sorted list of four, and so on until we've recombined all of the elements of the
+original list into a single new sorted list.
+
+Describe in words how the Quick Sort algorithm works.
+
+The Quick Sort algorithm uses a divide and conquer approach recursively to sort
+items in a list. The process which is repeated consists of choosing an element 
+as a "pivot," to which all elements in the list are compared so as to sort them 
+into three smaller lists: the list of items whose value is lower than the value 
+of the pivot, a list of one item (the pivot itself), and the list of items whose 
+value is higher than the pivot's. The first pivot can be any of the items, but 
+choosing one closer to the middle of the list improves runtime, so it's a good 
+idea to set the first pivot at the midpoint of the list. 
+
+Doing this recursively will continously halve and sort the lists (and make a 
+list of a single item for the new pivot) until every item is in its own list, 
+and the lists of one are sorted. Concatenating the lists back into a single 
+list results in the final, fully sorted list.
+
+Part 2: Skills Assessment
+
+Recursion
+
+Finish the functions in the recursion.py.
+
+Print a list recursively.
+Print tree data recursively.
+Find the length of a list recursively.
+Find the number of nodes in a tree recursively.
+Sorting
+
+Finish the functions in the sorting.py.
+
+Write a bubble sort algorithm.
+Write a function that merges two already sorted lists.
+Advanced
+
+Implement merge sort.
